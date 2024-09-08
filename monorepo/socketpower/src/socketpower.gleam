@@ -11,6 +11,7 @@ import glisten.{Packet}
 pub fn main() {
   let assert Ok(_) =
     glisten.handler(fn(_conn) { #(Nil, None) }, fn(msg, state, conn) {
+      // log message, state, and connection?
       let assert Packet(msg) = msg
       let assert Ok(_) = glisten.send(conn, bytes_builder.from_bit_array(msg))
       actor.continue(state)
